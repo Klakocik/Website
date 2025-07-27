@@ -94,26 +94,28 @@ document.addEventListener('DOMContentLoaded', function() {
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
+    element.style.opacity = '1'; // Make sure it's visible during typing
     
     function type() {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
             i++;
-            setTimeout(type, speed);
+            // Use shorter delay for spaces to avoid long pauses between words
+            const currentSpeed = text.charAt(i-1) === ' ' ? speed * 0.3 : speed;
+            setTimeout(type, currentSpeed);
         }
     }
     
     type();
 }
 
-// Initialize typing animation when page loads
-window.addEventListener('load', function() {
+// Initialize typing animation when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const originalText = heroTitle.textContent;
-        setTimeout(() => {
-            typeWriter(heroTitle, originalText, 150);
-        }, 500);
+        // Start immediately - no setTimeout delay
+        typeWriter(heroTitle, originalText, 130);
     }
 });
 

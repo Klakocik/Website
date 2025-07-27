@@ -197,6 +197,11 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
+    opacity: 0;
+    height: 4.8rem; /* Fixed height to prevent layout shift */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .highlight {
@@ -354,6 +359,12 @@ body {
     color: var(--text-primary);
 }
 
+.project-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
 .project-status {
     background: var(--gradient-primary);
     color: white;
@@ -361,6 +372,10 @@ body {
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
+}
+
+.project-status.open-source {
+    background: linear-gradient(135deg, #28a745, #20c997);
 }
 
 .project-description {
