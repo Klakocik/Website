@@ -94,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
-    element.style.opacity = '1'; // Make sure it's visible during typing
+    element.style.setProperty('visibility', 'visible', 'important'); // Override inline style
+    element.style.setProperty('opacity', '1', 'important');
     
     function type() {
         if (i < text.length) {
